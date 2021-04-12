@@ -2,15 +2,17 @@ CREATE DATABASE citiesData;
 use citiesData;
 
 CREATE TABLE IF NOT EXISTS tblCitiesImport (
+    `id` int AUTO_INCREMENT,
     `fldName` VARCHAR(21) CHARACTER SET utf8,
     `fldLat` NUMERIC(6, 4),
     `fldLong` NUMERIC(7, 4),
     `fldCountry` VARCHAR(19) CHARACTER SET utf8,
-    `fldAbreviation` VARCHAR(3) CHARACTER SET utf8,
+    `fldAbbreviation` VARCHAR(3) CHARACTER SET utf8,
     `fldCapitalStatus` VARCHAR(7) CHARACTER SET utf8,
-    `fldPopulation` INT
+    `fldPopulation` INT,
+    PRIMARY KEY (`id`)
 );
-INSERT INTO tblCitiesImport VALUES
+INSERT INTO tblCitiesImport (fldName,fldLat,fldLong,fldCountry,fldAbbreviation,fldCapitalStatus,fldPopulation) VALUES
     ('Tokyo',35.685,139.7514,'Japan','JPN','primary',35676000),
     ('New York',40.6943,-73.9249,'United States','USA','NA',19354922),
     ('Mexico City',19.4424,-99.131,'Mexico','MEX','primary',19028000),
@@ -246,4 +248,3 @@ INSERT INTO tblCitiesImport VALUES
     ('Benxi',41.3304,123.75,'China','CHN','NA',1012000),
     ('Louisville',38.1663,-85.6485,'United States','USA','NA',1011696),
     ('Cologne',50.93,6.95,'Germany','DEU','NA',1004000),
-    ('Qinhuangdao',39.9304,119.62,'China','CHN','NA',1003000);
