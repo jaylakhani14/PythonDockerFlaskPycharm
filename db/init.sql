@@ -1,5 +1,5 @@
-CREATE DATABASE citiesData;
-use citiesData;
+CREATE DATABASE poepleData;
+use peopleData;
 
 /* CREATE TABLE */
 CREATE TABLE IF NOT EXISTS tblPepleImport (
