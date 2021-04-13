@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS tblPepleImport (
   _ "Weight (lbs)" DECIMAL(10, 2)
 );
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -21,7 +21,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Alex', '       M', 41, 74, 170);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -31,7 +31,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Bert', '       M', 42, 68, 166);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -41,7 +41,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Carl', '       M', 32, 70, 155);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -51,7 +51,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Dave', '       M', 39, 72, 167);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -61,7 +61,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Elly', '       F', 30, 66, 124);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -71,7 +71,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Fran', '       F', 33, 66, 115);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -81,7 +81,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Gwen', '       F', 26, 64, 121);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -91,7 +91,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Hank', '       M', 30, 71, 158);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -101,7 +101,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Ivan', '       M', 53, 72, 175);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -111,7 +111,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Jake', '       M', 32, 69, 143);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -121,7 +121,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Kate', '       F', 47, 69, 139);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -131,7 +131,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Luke', '       M', 34, 72, 163);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -141,7 +141,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Myra', '       F', 23, 62, 98);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -151,7 +151,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Neil', '       M', 36, 75, 160);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -161,7 +161,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Omar', '       M', 38, 70, 145);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -171,7 +171,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Page', '       F', 31, 67, 135);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -181,7 +181,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Quin', '       M', 29, 71, 176);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
@@ -191,7 +191,7 @@ INSERT INTO TABLE_NAME(
 VALUES 
   ('Ruth', '       F', 28, 65, 131);
 /* INSERT QUERY */
-INSERT INTO TABLE_NAME(
+INSERT INTO tblPepleImport(
   Name, 
   _ Sex, 
   _Age, 
