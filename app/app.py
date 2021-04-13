@@ -12,126 +12,117 @@ app.config['MYSQL_DATABASE_HOST'] = 'db'
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
 app.config['MYSQL_DATABASE_PORT'] = 3306
-app.config['MYSQL_DATABASE_DB'] = 'peopleData'
+app.config['MYSQL_DATABASE_DB'] = 'movieRate'
 mysql.init_app(app)
 
 
 @app.route('/', methods=['GET'])
 def index():
-    user = {'username': 'People Project'}
+    user = {'username': 'Movie Ratings Project'}
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblPeopleImport')
+    cursor.execute('SELECT * FROM movies')
     result = cursor.fetchall()
-    return render_template('index.html', title='Home', user=user, People=result)
+    return render_template('index.html', title='Home', user=user, movies=result)
 
 
-@app.route('/view/<int:people_id>', methods=['GET'])
-def record_view(people_id):
+@app.route('/view/<int:movie_id>', methods=['GET'])
+def record_view(movie_id):
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblPeopleImport WHERE id=%s', people_id)
+    cursor.execute('SELECT * FROM movies WHERE id=%s', movie_id)
     result = cursor.fetchall()
-    return render_template('view.html', title='View Form', People=result[0])
+    return render_template('view.html', title='View Form', movie=result[0])
 
-
-@app.route('/edit/<int:people_id>', methods=['GET'])
-def form_edit_get(people_id):
+@app.route('/edit/<int:movie_id>', methods=['GET'])
+def form_edit_get(movie_id):
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblPeopleImport WHERE id=%s', people_id)
+    cursor.execute('SELECT * FROM movies WHERE id=%s', movie_id)
     result = cursor.fetchall()
-    return render_template('edit.html', title='Edit Form', People=result[0])
+    return render_template('edit.html', title='Edit Form', movie=result[0])
 
-
-@app.route('/edit/<int:people_id>', methods=['POST'])
-def form_update_post(people_id):
+@app.route('/edit/<int:movie_id>', methods=['POST'])
+def form_update_post(movie_id):
     cursor = mysql.get_db().cursor()
-    inputData = (request.form.get('fldName'), request.form.get('fldSex'), request.form.get('fldAge'),
-                 request.form.get('fldHeight'), request.form.get('fldWeight'), people_id)
-    sql_update_query = """UPDATE tblPeopleImport t SET t.fldName = %s, t.fldSex = %s, t.fldAge = %s, t.fldHeight = 
-    %s, t.fldWeight = %s, WHERE t.id = %s """
+    inputData = (request.form.get('Year'), request.form.get('Score'), request.form.get('Title'), movie_id)
+    sql_update_query = """UPDATE movies t SET t.Year = %s, t.Score = %s, t.Title = %s WHERE t.id = %s """
     cursor.execute(sql_update_query, inputData)
     mysql.get_db().commit()
     return redirect("/", code=302)
 
-@app.route('/people/new', methods=['GET'])
+@app.route('/movies/new', methods=['GET'])
 def form_insert_get():
-    return render_template('new.html', title='New People')
+    return render_template('new.html', title='New Movie Form')
 
-
-@app.route('/people/new', methods=['POST'])
+@app.route('/movies/new', methods=['POST'])
 def form_insert_post():
     cursor = mysql.get_db().cursor()
-    inputData = (request.form.get('fldName'), request.form.get('fldSex'), request.form.get('fldAge'),
-                 request.form.get('fldHeight'), request.form.get('fldWeight'))
-    sql_insert_query = """INSERT INTO tblPeopleImport (fldName,fldSex,fldAge,fldHeight,fldWeight) VALUES (%s, %s,%s, %s,%s) """
+    inputData = (request.form.get('Year'), request.form.get('Score'), request.form.get('Title'))
+    sql_insert_query = """INSERT INTO movies (Year,Score,Title) VALUES (%s, %s, %s) """
     cursor.execute(sql_insert_query, inputData)
     mysql.get_db().commit()
     return redirect("/", code=302)
 
-@app.route('/delete/<int:people_id>', methods=['POST'])
-def form_delete_post(people_id):
+@app.route('/delete/<int:movie_id>', methods=['POST'])
+def form_delete_post(movie_id):
     cursor = mysql.get_db().cursor()
-    sql_delete_query = """DELETE FROM tblPeopleImport WHERE id = %s """
-    cursor.execute(sql_delete_query, people_id)
+    sql_delete_query = """DELETE FROM movies WHERE id = %s """
+    cursor.execute(sql_delete_query, movie_id)
     mysql.get_db().commit()
     return redirect("/", code=302)
 
 
-@app.route('/api/v1/people', methods=['GET'])
+@app.route('/api/v1/movies', methods=['GET'])
 def api_browse() -> str:
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblPeopleImport')
+    cursor.execute('SELECT * FROM movies')
     result = cursor.fetchall()
     json_result = json.dumps(result);
     resp = Response(json_result, status=200, mimetype='application/json')
     return resp
 
 
-@app.route('/api/v1/people/<int:people_id>', methods=['GET'])
-def api_retrieve(people_id) -> str:
+@app.route('/api/v1/movies/<int:movie_id>', methods=['GET'])
+def api_retrieve(movie_id) -> str:
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblPeopleImport WHERE id=%s', people_id)
+    cursor.execute('SELECT * FROM movies WHERE id=%s', movie_id)
     result = cursor.fetchall()
     json_result = json.dumps(result);
     resp = Response(json_result, status=200, mimetype='application/json')
     return resp
 
 
-@app.route('/api/v1/people/<int:people_id>', methods=['PUT'])
-def api_edit(people_id) -> str:
-    cursor = mysql.get_db().cursor()
-    content = request.json
-    inputData = (content['fldName'], content['fldSex'], content['fldAge'],
-                 content['fldHeight'], content['fldWeight'], people_id)
-    sql_update_query = """UPDATE tblPeopleImport t SET t.fldName = %s, t.fldSex = %s, t.fldAge = %s, t.fldHeight = 
-        %s, t.fldWeight = %s WHERE t.id = %s """
-    cursor.execute(sql_update_query, inputData)
-    mysql.get_db().commit()
-    resp = Response(status=200, mimetype='application/json')
-    return resp
-
-@app.route('/api/v1/people', methods=['POST'])
+@app.route('/api/v1/movies/', methods=['POST'])
 def api_add() -> str:
-
     content = request.json
 
     cursor = mysql.get_db().cursor()
-    inputData = (content['fldName'], content['fldSex'], content['fldAge'],
-                 content['fldHeight'], content['fldWeight'] )
-    sql_insert_query = """INSERT INTO tblPeopleImport (fldName,fldSex,fldAge,fldHeight,fldWeight) VALUES (%s, %s,%s, %s,%s) """
+    inputData = (content['Year'], content['Score'], content['Title'])
+    sql_insert_query = """INSERT INTO movies (Year, Score, Title) VALUES (%s, %s,%s) """
     cursor.execute(sql_insert_query, inputData)
     mysql.get_db().commit()
     resp = Response(status=201, mimetype='application/json')
     return resp
 
-@app.route('/api/v1/people/<int:people_id>', methods=['DELETE'])
-def api_delete(people_id) -> str:
+
+@app.route('/api/v1/movies/<int:movie_id>', methods=['PUT'])
+def api_edit(movie_id) -> str:
     cursor = mysql.get_db().cursor()
-    sql_delete_query = """DELETE FROM tblPeopleImport WHERE id = %s """
-    cursor.execute(sql_delete_query, people_id)
+    content = request.json
+    inputData = (content['Year'], content['Score'], content['Title'], movie_id)
+    sql_update_query = """UPDATE movies t SET t.Year = %s, t.Score = %s, t.Title = %s WHERE t.id = %s """
+    cursor.execute(sql_update_query, inputData)
     mysql.get_db().commit()
     resp = Response(status=200, mimetype='application/json')
     return resp
 
+
+@app.route('/api/v1/movies/<int:movie_id>', methods=['DELETE'])
+def api_delete(movie_id) -> str:
+    cursor = mysql.get_db().cursor()
+    sql_delete_query = """DELETE FROM movies WHERE id = %s """
+    cursor.execute(sql_delete_query, movie_id)
+    mysql.get_db().commit()
+    resp = Response(status=200, mimetype='application/json')
+    return resp
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)

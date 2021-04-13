@@ -1,23 +1,21 @@
 {% extends "layout.html" %}
 {% block content %}
+
 <table class="table">
     <thead>
-    <tr>
-        <th scope="col">People Name</th>
-        <th scope="col">Sex</th>
-        <th scope="col">Age</th>
-        <th scope="col">Height</th>
-        <th scope="col">Weight</th>
-    </tr>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Year</th>
+            <th scope="col">Score</th>
+
+        </tr>
     </thead>
     <tbody>
-    {% for people in peoples %}
+    {% for movie in movies%}
     <tr>
-        <td><a href="view/{{people.id}}">{{ people.fldName }}</a></td>
-        <td>{{ city.fldSex }}</td>
-        <td>{{ city.fldAge }}</td>
-        <td>{{ city.fldHeight }}</td>
-        <td>{{ city.fldWeight }}</td>
+        <td><a href="view/{{movie.id}}">{{movie.Title}}</a></td>
+        <td>{{movie.Year}}</td>
+        <td>{{movie.Score}}</td>
     </tr>
     {% endfor %}
     </tbody>

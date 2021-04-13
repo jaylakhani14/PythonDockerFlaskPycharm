@@ -2,19 +2,19 @@
 {% block content %}
 
 <div class="card" class="m-5 p-2">
-    <h5 class="card-title">{{ people.fldName }} - {{ people.fldName }}</h5>
+    <h5 class="card-title">{{ movie.Title }}</h5>
 
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">Sex: {{ people.fldSex }}</li>
-        <li class="list-group-item">Age: {{ people.fldAge }}</li>
-        <li class="list-group-item">Height: {{ people.fldHeight }}</li>
-        <li class="list-group-item">Weight: {{ people.fldWeight }}</li>
+        <li class="list-group-item">{{ movie.Title }}</li>
+        <li class="list-group-item">{{ movie.Year }}</li>
+        <li class="list-group-item">{{ movie.Score }}</li>
+
     </ul>
     <div class="card-body">
-        <a href="/edit/{{people.id}}" class="card-link btn btn-primary">edit</a>
+        <a href="/edit/{{movie.id}}" class="card-link btn btn-primary">edit</a>
     </div>
 </div>
-<form action="/delete/{{people.id}}" method="post"><button type="submit" class="btn btn-danger">Delete</button></form>
+<form action="/delete/{{movie.id}}" method="post"><button type="submit" class="btn btn-danger">Delete</button></form>
 
 
 {% endblock %}

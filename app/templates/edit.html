@@ -1,33 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
-<form action="/edit/{{people.id}}" method="post">
+<form action="/edit/{{movie.id}}" method="post">
     <div class="row">
         <div class="col">
-            <label for="fldName">City Name</label>
-            <input id="fldName" type="text" class="form-control" placeholder="People Name" name="fldName" value="{{People.fldName}}">
+            <label for="Title">Movie Name</label>
+            <input id="Title" type="text" class="form-control" placeholder="Movie Name" name="Title" value="{{movie.Title}}">
         </div>
         <div class="col">
-            <label for="fldSex">People Sex</label>
-            <input id="fldSex" type="text" class="form-control" placeholder="People Sex"
-                   name="fldSex" value="{{People.fldSex}}">
+            <label for="Year">Movie Year</label>
+            <input id="Year" type="text" class="form-control" placeholder="Movie Year"
+                   name="Year" value="{{movie.Year}}">
         </div>
         <div class="col">
-            <label for="fldAge">People Age</label>
-            <input id="fldAge" type="text" class="form-control" placeholder="People Age" name="fldAge" value="{{People.fldAge}}">
+            <label for="Score">Movie Score</label>
+            <input id="Score" type="text" class="form-control" placeholder="Movie Score" name="Score" value="{{movie.Score}}">
         </div>
     </div>
 
-    <div class="row">
-        <div class="col">
-            <label for="fldHeight">People Height</label>
-            <input id="fldHeight" type="text" class="form-control" placeholder="Poeple Height" name="fldHeight" value="{{People.fldHeight}}">
-        </div>
-        <div class="col">
-            <label for="fldWeight">People Weight</label>
-            <input id="fldWeight" type="text" class="form-control" placeholder="People Weight" name="fldWeight" value="{{People.fldWeight}}">
-        </div>
-    </div>
-    <button type="submit" class="btn btn-success">Save</button>
+    <button type="submit" class="btn btn-success mt-4">Save</button>
 
 </form>
 {% endblock %}
